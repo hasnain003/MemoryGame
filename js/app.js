@@ -1,6 +1,44 @@
-/*
- * Create a list that holds all of your cards
- */
+let c = document.querySelectorAll('.card');
+//c.classList.add("open","show");
+//document.querySelector('.fa-star').style.backgroundColor = "red";
+/*c.addEventListener("click", function(){
+	c.classList.ahdd("open","show");
+});
+
+let displayCard = function(){
+	c.classList.add('open','show');
+}
+*/
+let count=0,type, elem;
+for(let i=0;i<c.length;i++){
+	
+	c[i].addEventListener("click", function(){
+		c[i].classList.add("open","show");
+		if(count%2 ===0) {
+			type=c[i].type;
+			elem = c[i];
+		}
+		else 
+			if(type === c[i].type) {
+				this.classList.add("match");
+				elem.classList.add("match");
+				console.log(type);
+			}
+			else{
+				this.classList.add("unmatch");
+				elem.classList.add("unmatch");
+				setTimeout(function() {
+       				c[i].classList.remove("open","show","unmatch");
+					elem.classList.remove("open","show","unmatch");
+				}, 600);
+				
+			}
+			
+		count++;
+	});
+}
+
+
 
 
 /*

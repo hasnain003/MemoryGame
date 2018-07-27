@@ -77,9 +77,43 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background: #7cfc00;
     font-size: 33px;
+	animation-name: matched;
+	animation-direction: normal;
+	animation-duration: .6s;
+	animation-iteration-count: 1;
 }
+
+.deck .card.unmatch {
+	cursor: default;
+	background: #ff1493;
+	font-size: 33px;
+	animation-name: unmatched;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+}
+/*
+ *Animation for matching and unmatching of cards 
+ */
+
+@keyframes matched{
+	0% { transform: scale(1,1);	}
+	20% { transform: scale(1.25,.75);	}
+	40% { transform: scale(.7,1.25); }
+	60% { transform: scale(1.14,.9); }
+	80% { transform: scale(.88,1.1); }
+	100% { transform: scale(1.1,.92); }
+}
+
+@keyframes unmatched{
+	0% { transform: translateX(0); }
+	25% { transform: translateX(-1em); }
+	50% { transform: translateX(1em); }
+	75% { transform: translateX(-.5em); }
+	100% { transform: translateX(.5em); }
+}
+
 
 /*
  * Styles for the Score Panel

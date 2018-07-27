@@ -67,12 +67,17 @@ h1 {
 
 .deck .card.open {
     transform: rotateY(0);
+	animation-name:flipY;
+	animation-duration: .7s;
     background: #02b3e4;
     cursor: default;
 }
 
 .deck .card.show {
     font-size: 33px;
+}
+.deck .card.disable{
+	pointer-events: none;
 }
 
 .deck .card.match {
@@ -98,22 +103,58 @@ h1 {
  */
 
 @keyframes matched{
-	0% { transform: scale(1,1);	}
-	20% { transform: scale(1.25,.75);	}
-	40% { transform: scale(.7,1.25); }
-	60% { transform: scale(1.14,.9); }
-	80% { transform: scale(.88,1.1); }
-	100% { transform: scale(1.1,.92); }
+	0% { transform: scale(1,1);
+	}
+	20% { transform: scale(1.25,.75);
+	}
+	40% { transform: scale(.7,1.25); 
+	}
+	60% { transform: scale(1.14,.9); 
+	}
+	80% { transform: scale(.88,1.1); 
+	}
+	100% { transform: scale(1.1,.92); 
+	}
 }
 
 @keyframes unmatched{
-	0% { transform: translateX(0); }
-	25% { transform: translateX(-1em); }
-	50% { transform: translateX(1em); }
-	75% { transform: translateX(-.5em); }
-	100% { transform: translateX(.5em); }
+	0% { transform: translateX(0); 
+	animation-timing-function: ease-out;
+	}
+	25% { transform: translateX(-1em); 
+	animation-timing-function: ease-out;
+	}
+	50% { transform: translateX(1em); 
+	animation-timing-function: ease-out;
+	}
+	75% { transform: translateX(-.5em); 
+	animation-timing-function: ease-out;
+	}
+	100% { transform: translateX(.5em); 
+	animation-timing-function: ease-out;
+	}
 }
 
+@keyframes flipY{
+	0% {
+		transform: perspective(15em) rotate3d(0,1,0,90deg);
+		animation-timing-function: ease-in;
+		opacity: 0;
+	}
+	25% {
+		transform:perspective(15em) rotate3d(0,1,0,-20deg);
+	}
+	50% {
+		transform: perspective(15em) rotate3d(0,1,0,10deg);
+		opacity: 1;
+	}
+	75% {
+		transform: perspective(15em) rotate3d(0,1,0,-5deg);
+	}
+	100% {
+		transform: perspective(15em);
+	}
+}
 
 /*
  * Styles for the Score Panel

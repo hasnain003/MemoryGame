@@ -13,7 +13,7 @@ let count=0,type, elem;
 for(let i=0;i<c.length;i++){
 	
 	c[i].addEventListener("click", function(){
-		c[i].classList.add("open","show");
+		c[i].classList.add("open","show","disable");
 		if(count%2 ===0) {
 			type=c[i].type;
 			elem = c[i];
@@ -28,9 +28,9 @@ for(let i=0;i<c.length;i++){
 				this.classList.add("unmatch");
 				elem.classList.add("unmatch");
 				setTimeout(function() {
-       				c[i].classList.remove("open","show","unmatch");
-					elem.classList.remove("open","show","unmatch");
-				}, 600);
+       				c[i].classList.remove("open","show","unmatch","disable");
+					elem.classList.remove("open","show","unmatch","disable");
+				}, 700);
 				
 			}
 			

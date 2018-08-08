@@ -38,22 +38,28 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
+    width: 85%;
+ /*   min-height: 680px; */
     background: linear-gradient(160deg, #ffccba 0%, #aa7ecd 100%);
-    padding: 32px;
-    border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    padding: 1em;
+    border-radius: 6px;
+    box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
     margin: 0 0 3em;
+	
+}
+
+.card {
+	margin-left: 3px;
+	
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
+    height: 3.7rem;
+    width: 3.7rem;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -277,3 +283,36 @@ h1 {
     list-style: none;
     display: inline-block;
 }
+
+
+/*
+ * Adding Responsiveness
+*/
+
+@media (max-width:450px){
+	.deck {
+		width: 82%;
+		justify-content: center;
+	}
+	
+	.deck .card {
+		width: 4.7rem;
+		height: 4.7rem;
+	}
+}
+
+@media (min-width:750px){
+	.deck {
+		width: 660px;
+		height: 680px;
+	}
+	.deck .card {
+		width: 125px;
+		height: 125px;
+		margin:
+	} 
+	.modal {
+		width: 60%;
+	}
+}
+

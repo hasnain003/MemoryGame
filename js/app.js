@@ -152,8 +152,8 @@ function startGame(){
 			starList[i].style.color= "#ffd700";
 			starList[i].style.visibility="";
 		}
-	
-	moves.innerHTML=count;
+	counter=0;
+	moves.innerHTML=counter;
 
 	sec=0;
 	min=0;

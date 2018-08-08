@@ -157,6 +157,7 @@ function startGame(){
 	sec=0;
 	min=0;
 	hour=0;
+	timer.innerHTML=hour+" hour "+min+" min "+sec;
 	clearInterval(interval);
 }
 

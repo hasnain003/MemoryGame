@@ -257,3 +257,8 @@ h1 {
     background-color: #5cb85c;
     color: white;
 }
+
+.rating li {
+    list-style: none;
+    display: inline-block;
+}

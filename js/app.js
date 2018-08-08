@@ -7,7 +7,7 @@ let deck=document.querySelector('.deck');
 let count=0,counter=0;
 let moves=document.querySelector('.moves');
 
-
+//let matchedCards=document.querySelectorAll('.match');
 
 let stars=document.querySelector('.stars');
 
@@ -18,6 +18,8 @@ let timer=document.querySelector('.timer');
 
 let openCards=[];
 let type, elem;
+
+let modal=document.querySelector('.modal');
 //c.classList.add("open","show");
 //document.querySelector('.fa-star').style.backgroundColor = "red";
 /*c.addEventListener("click", function(){
@@ -29,7 +31,7 @@ let displayCard = function(){
 }
 */
 
-const star=document.querySelector('.stars');
+//const stars=document.querySelector('.stars');
 
 function displayCard(){
 	this.classList.add("open","show","disable");
@@ -43,7 +45,6 @@ function cardOpen(){
 /*	this.addEventListener("click", function(){
 		this.classList.add("open","show","disable");
 	}); */
-	console.log(this.type);
 	if(openCards.length === 2)
 		{
 			if(openCards[0].type === openCards[1].type) {
@@ -196,11 +197,50 @@ function setTime(){
 	},1000);
 }
 
+function end(){
+	let matchedCards=document.querySelectorAll('.match');
+	console.log(matchedCards.length);
+	
+	if(matchedCards.length === 16)
+		{
+			clearInterval(interval);
+			const finalTime=timer.innerHTML;
+			const finalRating=document.querySelector('.stars');
+			
+			modal.style.display = "block";
+			document.querySelector('.finalMoves').innerHTML=counter;
+			document.querySelector('.finalTime').innerHTML=finalTime;
+			document.querySelector('.rating').innerHTML=finalRating;
+			if(document.querySe)
+			closeModel();
+		}
+}
+
+function closeModel(){
+	// When the user clicks on <span> (x), close the modal
+	const span = document.getElementsByClassName("close")[0];
+	span.onclick = function() {
+    	modal.style.display = "none";
+	}
+	
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+    	}
+	}
+}
+
+function playGame(){
+	modal.style.display="none";
+	startGame();
+}
 
 for(i=0;i<c.length;i++)
 	{
 		c[i].addEventListener("click",displayCard);
 		c[i].addEventListener("click",cardOpen);
+		c[i].addEventListener("click",end);
 	}
 /*
  * set up the event listener for a card. If a card is clicked:

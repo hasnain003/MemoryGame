@@ -62,7 +62,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73 ,0.5);
 }
 
 .deck .card.open {
@@ -82,7 +82,7 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: #7cfc00;
+    background: #e5f720;
     font-size: 33px;
 	animation-name: matched;
 	animation-direction: normal;
@@ -181,4 +181,9 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+.fa-star{
+	width: 2em;
+	height: 2em;
 }

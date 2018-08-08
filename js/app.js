@@ -1,4 +1,23 @@
 let c = document.querySelectorAll('.card');
+
+let cards=[...c];
+
+let deck=document.querySelector('.deck');
+
+let count=0,counter=0;
+let moves=document.querySelector('.moves');
+
+
+
+let stars=document.querySelector('.stars');
+
+let starList=document.querySelectorAll('.fa-star');
+
+let hour,min,sec,interval;
+let timer=document.querySelector('.timer');
+
+let openCards=[];
+let type, elem;
 //c.classList.add("open","show");
 //document.querySelector('.fa-star').style.backgroundColor = "red";
 /*c.addEventListener("click", function(){
@@ -9,26 +28,64 @@ let displayCard = function(){
 	c.classList.add('open','show');
 }
 */
-let count=0,type, elem;
-for(let i=0;i<c.length;i++){
+
+const star=document.querySelector('.stars');
+
+function displayCard(){
+	this.classList.add("open","show","disable");
+}
+
+function cardOpen(){ 
+
+//for(let i=0;i<c.length;i++){
+	openCards.push(this);
 	
-	c[i].addEventListener("click", function(){
-		c[i].classList.add("open","show","disable");
+/*	this.addEventListener("click", function(){
+		this.classList.add("open","show","disable");
+	}); */
+	console.log(this.type);
+	if(openCards.length === 2)
+		{
+			if(openCards[0].type === openCards[1].type) {
+				movesCounter();
+				openCards[0].classList.add("match");
+				openCards[1].classList.add("match");
+				openCards=[];
+			}
+			else{
+				movesCounter();
+				openCards[0].classList.add("unmatch");
+				openCards[1].classList.add("unmatch");
+				setTimeout(function() {
+       				openCards[0].classList.remove("open","show","unmatch","disable");
+					openCards[1].classList.remove("open","show","unmatch","disable");
+					openCards=[];
+				}, 700);
+			}
+		}
+	/*else{
+		
+	}
+	
+	this.addEventListener("click", function(){
+		this.classList.add("open","show","disable");
 		if(count%2 ===0) {
-			type=c[i].type;
-			elem = c[i];
+			type=this.type;
+			elem = this;
 		}
 		else 
-			if(type === c[i].type) {
+			if(type === this.type) {
+				movesCounter();
 				this.classList.add("match");
 				elem.classList.add("match");
 				console.log(type);
 			}
 			else{
+				movesCounter();
 				this.classList.add("unmatch");
 				elem.classList.add("unmatch");
 				setTimeout(function() {
-       				c[i].classList.remove("open","show","unmatch","disable");
+       				this.classList.remove("open","show","unmatch","disable");
 					elem.classList.remove("open","show","unmatch","disable");
 				}, 700);
 				
@@ -36,9 +93,18 @@ for(let i=0;i<c.length;i++){
 			
 		count++;
 	});
+//	}*/
 }
-
-
+/*
+function cardOpen(){
+	cardOpen.push(this);
+	len=cardOpen.length;
+	if(len==2)
+		{
+			
+		}
+}
+*/
 
 
 /*
@@ -63,7 +129,78 @@ function shuffle(array) {
     return array;
 }
 
+document.body.onload=startGame();
 
+
+function startGame(){
+	c=shuffle(cards);
+	
+//	console.log(c);
+	
+	for(let i=0; i<c.length;i++)
+		{
+			deck.innerHTML = "";
+			[].forEach.call(cards, function(item) {
+				deck.appendChild(item);
+			});
+			c[i].classList.remove("open","show","match","disable");
+		}
+	
+	for(let i=0;i<starList.length;i++)
+		{
+			starList[i].style.color= "#ffd700";
+			starList[i].style.visibility="";
+		}
+	
+	moves.innerHTML=count;
+
+	sec=0;
+	min=0;
+	hour=0;
+	clearInterval(interval);
+}
+
+
+function movesCounter(){
+	counter++;
+	moves.innerHTML=counter;
+	if(counter === 1)
+		{
+			setTime();		    
+		}
+	if(counter === 13)
+		{
+			starList[2].style.color= "#000";
+		}
+	else if(counter === 18)
+		{
+			starList[1].style.color= "#000";
+		}
+}
+
+
+function setTime(){
+	interval = setInterval(function(){
+		timer.innerHTML=hour+" hour "+min+" min "+sec;
+		sec++;
+		if(sec === 60){
+			min++;
+			sec= 0;
+		}
+		if(min === 60)
+			{
+				hour++;
+				min= 0;
+			}
+	},1000);
+}
+
+
+for(i=0;i<c.length;i++)
+	{
+		c[i].addEventListener("click",displayCard);
+		c[i].addEventListener("click",cardOpen);
+	}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
